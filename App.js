@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import LoginPage from './res/login'
+import Router from './res/navigation/Router'
 const App = () => {
   return (
-    <LoginPage />
+    <Router />
   )
 }
 
