@@ -1,17 +1,17 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 const ScreenWidth = Dimensions.get('window').width
 const LoginPage = () => {
-  const print = () => {
-    console.log(email)
-    console.log(password)
-  }
+
   const [email, setemail] = React.useState(null)
   const [password, setpassword] = React.useState(null)
+  const navigation = useNavigation();
+
   return (
     <View style={styles.body} >
       <View style={styles.container}>
-        <Image style={styles.image} source={require("../../../assets/add-friend.png")} />
+        <Image style={styles.image} source={require("../../../assets/user.gif")} />
         <View style={styles.infoContainer}>
           <Text style={styles.titletext}>Welcome to Quizzer</Text>
         </View>{/* infoContainer */}
@@ -25,7 +25,7 @@ const LoginPage = () => {
       </View>{/* container */}
       <View style={{ marginTop: 40, alignItems: 'center' }}>
 
-        <TouchableOpacity style={styles.button} onPress={print}>
+        <TouchableOpacity style={styles.button} >
           <Text style={styles.buttontext}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -36,7 +36,7 @@ const LoginPage = () => {
           </Text>
         </View>
         <View style={{ marginLeft: 5 }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => { navigation.navigate('Signup') }}>
             <Text style={{ color: '#6330c2', fontWeight: 'bold' }}>
               Register !
             </Text>
@@ -53,15 +53,16 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems: 'center',
-
     backgroundColor: 'white'
+
+
   },
   text: {
     color: 'black',
   },
   image: {
-    width: 120,
-    height: 120,
+    width: 150,
+    height: 150,
     alignSelf: 'center',
   },
   container: {
