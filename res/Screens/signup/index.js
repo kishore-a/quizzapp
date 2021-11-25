@@ -8,6 +8,20 @@ const Signup = () => {
   const navigation = useNavigation()
   const [email, setemail] = React.useState(null)
   const [password, setpassword] = React.useState(null)
+  const [initalizing, setinitalizing] = React.useState(true)
+  const [user, setuser] = React.useState()
+
+
+  const signup = () => {
+    try {
+      auth().createUserWithEmailAndPassword(email, password)
+      navigation.navigate('LoginPage')
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <View style={styles.body} >
       <View style={styles.container}>
@@ -25,7 +39,7 @@ const Signup = () => {
       </View>{/* container */}
       <View style={{ marginTop: 40, alignItems: 'center' }}>
 
-        <TouchableOpacity style={styles.button}  >
+        <TouchableOpacity style={styles.button} onPress={signup}  >
           <Text style={styles.buttontext}>SignUp</Text>
         </TouchableOpacity>
       </View>
@@ -46,6 +60,8 @@ const Signup = () => {
       </View>
     </View>
   )
+
+
 }
 
 const styles = StyleSheet.create({
