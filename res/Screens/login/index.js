@@ -17,7 +17,6 @@ const LoginPage = () => {
   }
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChange)
-    console.log(subscriber)
     return subscriber
   }, [])
 
